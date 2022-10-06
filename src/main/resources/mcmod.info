@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "xibaom",
+  "name": "XiBaoM",
+  "description": "Migrated from XiBaoPP",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "https://github.com/flowerinsnowdh/XiBaoM",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["flowerinsnow"],
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
