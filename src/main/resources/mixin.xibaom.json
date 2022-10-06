@@ -1,0 +1,9 @@
+{
+  "package": "online.flowerinsnow.xibaom.mixin",
+  "refmap": "mixins.xibaom.refmap.json",
+  "mixins": [],
+  "client": [
+    "MixinGuiDisconnected"
+  ],
+  "server": []
+}
