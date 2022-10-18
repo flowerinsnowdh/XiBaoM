@@ -15,6 +15,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import online.flowerinsnow.xibaom.C;
 import online.flowerinsnow.xibaom.config.XiBaoMConfig;
 import online.flowerinsnow.xibaom.object.LocationDimension;
@@ -26,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(GuiDisconnected.class)
+@SideOnly(Side.CLIENT)
 public class MixinGuiDisconnected extends GuiScreen {
     private final GuiDisconnected THIS = (GuiDisconnected) (Object) this;
     private ISound playingSound;

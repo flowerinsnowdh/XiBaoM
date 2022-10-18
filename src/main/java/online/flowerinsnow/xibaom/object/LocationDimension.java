@@ -1,5 +1,9 @@
 package online.flowerinsnow.xibaom.object;
 
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+@SideOnly(Side.CLIENT)
 public class LocationDimension {
     public int x;
     public int y;

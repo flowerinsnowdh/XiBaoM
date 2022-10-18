@@ -5,12 +5,15 @@ import net.minecraft.crash.CrashReport;
 import net.minecraftforge.common.config.ConfigCategory;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import online.flowerinsnow.xibaom.C;
 import online.flowerinsnow.xibaom.object.LocationDimension;
 import online.flowerinsnow.xibaom.util.ArgumentUtils;
 
 import java.io.File;
 
+@SideOnly(Side.CLIENT)
 public class XiBaoMConfig {
     public static String displayX; // button.x : string
     public static String displayY; // button.y : string

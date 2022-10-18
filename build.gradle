@@ -19,7 +19,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'org.spongepowered.mixin'
 
-version = '1.12.1'
+version = '1.12.2'
 group = 'online.flowerinsnow'
 archivesBaseName = 'xibaom'
 
