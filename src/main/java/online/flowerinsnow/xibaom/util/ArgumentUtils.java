@@ -2,9 +2,12 @@ package online.flowerinsnow.xibaom.util;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.crash.CrashReport;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.function.Supplier;
 
+@SideOnly(Side.CLIENT)
 public final class ArgumentUtils {
     private ArgumentUtils() {
     }

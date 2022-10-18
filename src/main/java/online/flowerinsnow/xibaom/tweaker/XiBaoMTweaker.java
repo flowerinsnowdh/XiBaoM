@@ -3,6 +3,8 @@ package online.flowerinsnow.xibaom.tweaker;
 import net.minecraft.launchwrapper.ITweaker;
 import net.minecraft.launchwrapper.LaunchClassLoader;
 import net.minecraftforge.fml.relauncher.CoreModManager;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.launch.MixinBootstrap;
@@ -14,6 +16,7 @@ import java.net.URL;
 import java.security.CodeSource;
 import java.util.List;
 
+@SideOnly(Side.CLIENT)
 public class XiBaoMTweaker implements ITweaker {
     @Override
     public void acceptOptions(List<String> args, File gameDir, File assetsDir, String profile) {
