@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 @SideOnly(Side.CLIENT)
 public class XiBaoM {
     public static final String MODID = "xibaom";
-    public static final String VERSION = "@VERSION%";
+    public static final String VERSION = "@VERSION@";
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
