@@ -1,0 +1,105 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            url 'https://repo.spongepowered.org/repository/maven-public/'
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:3.+'
+        classpath 'org.spongepowered:mixingradle:0.7.32'
+    }
+}
+        
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
+
+version = '1.12.1'
+group = 'online.flowerinsnow'
+archivesBaseName = 'xibaom'
+
+minecraft {
+    mappings channel: 'snapshot', version: '20171003-1.12'
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+        }
+
+        server {
+            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
+            property 'forge.logging.console.level', 'debug'
+        }
+    }
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://repo.spongepowered.org/repository/maven-public/'
+    }
+}
+
+dependencies {
+    embed('org.spongepowered:mixin:0.8.3') {
+        exclude module: 'guava'
+        exclude module: 'commons-io'
+        exclude module: 'gson'
+    }
+    minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
+}
+
+jar {
+    from configurations.embed.asFileTree.files.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+    manifest {
+        attributes([
+            "Specification-Title": "xibaom",
+            "Specification-Vendor": "flowerinsnow",
+            "Specification-Version": "1",
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"flowerinsnow",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            'ForceLoadAsMod': 'true',
+            'TweakClass': 'online.flowerinsnow.xibaom.tweaker.XiBaoMTweaker'
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            url "file:///${project.projectDir}/mcmodsrepo"
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+mixin {
+    add sourceSets.main, "mixins.xibaom.refmap.json"
+}
